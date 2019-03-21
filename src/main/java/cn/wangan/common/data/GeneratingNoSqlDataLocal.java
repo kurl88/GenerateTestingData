@@ -14,7 +14,7 @@ import java.util.Random;
  * 生成NoSql数据文件
  * @author Peng Xiaodong
  */
-public class GeneratingNoSqlData {
+public class GeneratingNoSqlDataLocal {
 
     private final char[] a2zLetters = {
             'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
@@ -31,8 +31,9 @@ public class GeneratingNoSqlData {
     public void generate1TData(File file) {
         generateNoSqlDataAndWriteToFile(2000000000000000000L, 106905600, file, 200);
     }
-
-
+    public void generate1GData(File file) {
+        generateNoSqlDataAndWriteToFile(1000000000000000000L, 320717, file, 3);
+    }
     private void generateNoSqlDataAndWriteToFile(long startRowKeyIndex, long size, File file, int fileNum) {
 
         long fileLineNum = size / fileNum;
@@ -98,9 +99,9 @@ public class GeneratingNoSqlData {
     }
 
     public static void main(String[] args) {
-        String dataSize = args[0];
-        String filePath = args[1];
-        GeneratingNoSqlData generatingNoSqlData = new GeneratingNoSqlData();
+        String dataSize = "1G";
+        String filePath = "/Volumes/william/dataFile/nosql/3G/no_sql_1G.txt";
+        GeneratingNoSqlDataLocal generatingNoSqlData = new GeneratingNoSqlDataLocal();
         if (StringUtils.equals(dataSize, "5G")) {
             generatingNoSqlData.generate5GData(new File(filePath));
 
@@ -110,8 +111,10 @@ public class GeneratingNoSqlData {
         } else if (StringUtils.equals(dataSize, "1T")) {
             generatingNoSqlData.generate1TData(new File(filePath));
 
+        }else if (StringUtils.equals(dataSize, "1G")) {
+            generatingNoSqlData.generate1GData(new File(filePath));
+
         }
     }
-
 
 }

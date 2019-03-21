@@ -98,8 +98,7 @@ public class GeneratingWordSData {
     public static void main(String[] args) {
         String dataSize = args[0];
         String filePath = args[1];
-//        String  dataSize ="5G";
-//        String filePath="E:\\data\\noSql\\nosql_500G.txt";
+
         GeneratingWordSData generatingNoSqlData = new GeneratingWordSData();
         if (StringUtils.equals(dataSize, "5G")) {
             generatingNoSqlData.generate5GData(new File(filePath));
@@ -107,7 +106,7 @@ public class GeneratingWordSData {
         } else if (StringUtils.equals(dataSize, "500G")) {
             generatingNoSqlData.generate500GData(new File(filePath));
 
-        } else if (StringUtils.equals(dataSize, "1T")) {
+        } else if (StringUtils.equals(dataSize, "3T")) {
             generatingNoSqlData.generate3TData(new File(filePath));
 
         }
